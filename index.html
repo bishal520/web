@@ -16,7 +16,7 @@ const videoPlayer = document.getElementById('videoPlayer');
 const playlistSelect = document.getElementById('playlistSelect');
 let hls;
 
-const sportsChannels = [
+const m3u8Urls= [
     { name: "RTV", url: "https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/chunklist_w2015195144.m3u8", group: "Cricket 🏏", logo: "" }, 
     { name: "ATN News", url: "http://tv.cloudcdn.me:80/live.ts?channelId=83&uid=16068&deviceMac=00:1A:79:ED:10:29", group: "SPORTS", logo: "https://tstatic.akash-go.com/cms-ui/images/custom-content/1719845011632.png"},
     { name: "Banglavision HD", url: "http://starshare.live:8080/live/Leroy123/Leroy123/426.ts", group: "SR Bangladeshi", logo: "https://i.ibb.co/N6YsQx2/20240815-181504.png"}, // This one's group is "SR Bangladeshi", but seems sports-related.  Adjust if needed.
