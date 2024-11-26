@@ -74,20 +74,5 @@ body {
 
 
 
-<?php
-// PHP code within the same file
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['_']) && $_GET['_'] === "get_m3u8_url") { // Check if it's an AJAX call to get the URL
-
-    $m3u8Url = "your_m3u8_url.m3u8";  // Replace with your actual URL or logic
-    // Add security measures here (e.g., authentication)
-    header('Content-Type: application/vnd.apple.mpegurl'); 
-    echo $m3u8Url;
-    exit; // Important: Stop further HTML output after sending the m3u8 URL
-}
-
-?>
-
-
-
 </body>
 </html>
