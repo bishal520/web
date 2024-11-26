@@ -1,6 +1,4 @@
-#EXTM3U
-
-#EXTINF:-1 group-title="BANGLADESH",RTV
+#EXTINF:-1 group-title="BANGLADESH"RTV,
 https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/chunklist_w2015195144.m3u8
 
 #EXTINF:-1 group-title="BANGLADESH",RTV HD
