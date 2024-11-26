@@ -1,70 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>M3U8 Player</title>
+<title>Multiple M3U8 Player</title>
 <style>
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 300vh;
-  background-color: #f0f0f0;
-  flex-direction: column; /* Arrange elements vertically */
-}
-#videoPlayer { background-color: #000; }
+/* ... your styles ... */
 </style>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
 
-<select id="playlistSelect"></select> <video id="videoPlayer" controls width="640" height="360"></video>
+<select id="playlistSelect">
+    <option value="https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/chunklist_w2015195144.m3u8">Playlist 1</option>
+    <option value="https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/playlist.m3u8">Playlist 2</option>
+    <option value="http://tv.cloudcdn.me:80/live.ts?channelId=84&uid=3788&deviceMac=00:1A:79:6D:8A:C6">Playlist 3</option>
+    <!-- Add more options for each playlist -->
+</select>
+
+<video id="videoPlayer" controls width="640" height="360"></video>
 
 <script>
 const videoPlayer = document.getElementById('videoPlayer');
 const playlistSelect = document.getElementById('playlistSelect');
-let hls;
+let hls; // Declare hls outside so it can be destroyed if needed.
 
 function loadPlaylist(m3u8Url) {
-    if (hls) { hls.destroy(); }
+    if (hls) {
+        hls.destroy(); // Destroy the previous HLS instance
+    }
+
     if (Hls.isSupported()) {
         hls = new Hls();
         hls.loadSource(m3u8Url);
         hls.attachMedia(videoPlayer);
         hls.on(Hls.Events.MANIFEST_PARSED, () => videoPlayer.play());
-        // ... (Error handling as before) ...
+        // ... (Error handling as before)
     } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
         videoPlayer.src = m3u8Url;
         videoPlayer.addEventListener('loadedmetadata', () => videoPlayer.play());
-    } else { /* ... (Error handling for no HLS support) ...*/ }
+    } else {
+        // ... (Error handling for no HLS support)
+    }
 }
 
-fetch('get_playlists.php') // Fetch playlist data from the server
-.then(res => res.json())
-.then(data => {
-    if (data.error) {
-        console.error(data.error); // Handle the error if the playlist file isn't found
-        return;  // Stop further processing if there's an error.
-    }
-
-    data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.url;
-        option.text = item.name;
-        playlistSelect.appendChild(option);
-    });
-
-    // Load the first playlist by default (after the options are added)
-    loadPlaylist(playlistSelect.value);  
-
-    playlistSelect.addEventListener('change', () => {
-        loadPlaylist(playlistSelect.value);
-    });
-})
-.catch(error => {
-    console.error("Error fetching playlist data:", error);
+playlistSelect.addEventListener('change', () => {
+    const selectedUrl = playlistSelect.value;
+    loadPlaylist(selectedUrl);
 });
 
-</script>
+// Initial playlist load (optional - loads the first one by default)
+loadPlaylist(playlistSelect.value);
 
+
+</script>
 </body>
 </html>
