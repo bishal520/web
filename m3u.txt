@@ -1,46 +1,17 @@
-#EXTINF:-1 group-title="BANGLADESH"RTV,
-https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/chunklist_w2015195144.m3u8
-
-#EXTINF:-1 group-title="BANGLADESH",RTV HD
-https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/playlist.m3u8
-
-#EXTINF:-1 group-title="BANGLADESH",BANGLA VISION HD
-http://tv.cloudcdn.me:80/live.ts?channelId=84&uid=3788&deviceMac=00:1A:79:6D:8A:C6
-
-#EXTINF:-1 group-title="BANGLADESH",DESH TV
-http://tv.cloudcdn.me:80/live.ts?channelId=93&uid=3788&deviceMac=00:1A:79:6D:8A:C6
-
-#EXTINF:-1 group-title="BANGLADESH",CHANNEL 9 HD
-http://tv.cloudcdn.me:80/live.ts?channelId=88&uid=10016&deviceMac=00:1A:79:20:6F:F3
-
-#EXTINF:-1 group-title="BANGLADESH",SATV HD
-http://176.119.29.52/live.ts?channelId=114&uid=3960&deviceMac=00:1A:79:09:AC:16  (Corrected URL)
-#EXTINF:-1 group-title="BANGLADESH",SATV HD
-http://tv.cloudcdn.me:80/live.ts?channelId=114&uid=3960&deviceMac=00:1A:79:09:AC:16
-
-#EXTINF:-1 group-title="BANGLADESH",DEEPTO TV HD
-https://byphdgllyk.gpcdn.net/hls/DeeptoTV/index.m3u8
-#EXTINF:-1 group-title="BANGLADESH",DEEPTO TV HD
-https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8?
-
-#EXTINF:-1 group-title="BANGLADESH",NAGORIK TV
-http://starshare.live:8080/live/Leroy123/Leroy123/3802.ts
-
-#EXTINF:-1 group-title="BANGLADESH",MOVIE BANGLA
-http://alvetv.com/moviebanglatv/8080/index.m3u8
-
-#EXTINF:-1 group-title="BANGLADESH",GLOBAL TV HD
-http://starshare.live:8080/live/Leroy123/Leroy123/4231.ts
-
-#EXTINF:-1 group-title="BANGLADESHI",BTV National
+Playlist Name 1,https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/chunklist_w2015195144.m3u8
+Playlist Name 2,https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/playlist.m3u8
+Playlist Name 3,http://tv.cloudcdn.me:80/live.ts?channelId=84&uid=3788&deviceMac=00:1A:79:6D:8A:C6
+Playlist Name 1,http://176.119.29.52/live.ts?channelId=114&uid=3960&deviceMac=00:1A:79:09:AC:16  (Corrected URL)
+Playlist Name 1,http://tv.cloudcdn.me:80/live.ts?channelId=114&uid=3960&deviceMac=00:1A:79:09:AC:16
+Playlist Name 1,https://byphdgllyk.gpcdn.net/hls/DeeptoTV/index.m3u8
+Playlist Name 1,https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8
+Playlist Name 1,http://starshare.live:8080/live/Leroy123/Leroy123/3802.ts
+Playlist Name 1,http://alvetv.com/moviebanglatv/8080/index.m3u8
+Playlist Name 1,http://starshare.live:8080/live/Leroy123/Leroy123/4231.ts
 http://176.119.29.52/live.ts?channelId=44154&uid=13433&deviceMac=00:1A:79:00:97:A1  (Corrected URL)
-#EXTINF:-1 group-title="BANGLADESHI",BTV National
 http://tv.cloudcdn.me/live.ts?channelId=44154&uid=16068&deviceMac=00:1A:79:ED:10:29
-#EXTINF:-1 group-title="BANGLADESHI",BTV
 http://103.230.105.252:1935/live/btv/chunklist_w524649012.m3u8
-#EXTINF:-1 group-title="BANGLADESHI",BTV
 http://103.230.105.252:1935/live/btv/manifest.m3u8
-#EXTINF:-1 group-title="𝗕𝗮𝗻𝗴𝗹𝗮𝗱𝗲𝘀𝗵𝗶",𝘽𝙏𝙑 𝙉𝙖𝙩𝙞𝙤𝙣𝙖𝙡
 http://103.230.105.252:1935/live/btv/manifest_w1943401517.mpd
 
 
