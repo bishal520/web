@@ -10,69 +10,56 @@ body {
   min-height: 100vh;
   background-color: #f0f0f0;
 }
-  
-
-#videoPlayer {
-    background-color: #000; /* Black background for video area */
-}
+#videoPlayer { background-color: #000; }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> 
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
 
-  <video id="videoPlayer" controls width="640" height="360"></video>
+<video id="videoPlayer" controls width="640" height="360"></video>
 
-  <script>
-    const videoPlayer = document.getElementById('videoPlayer');
+<script>
+const videoPlayer = document.getElementById('videoPlayer');
 
-    // Make an AJAX request to get the m3u8 URL
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'get_m3u8_url.php', true); // Same file for both HTML and PHP
-    xhr.onload = function() {
-      if (this.status >= 200 && this.status < 400) {
-          const m3u8Url = this.responseText;
+// *** REPLACE THIS WITH YOUR ACTUAL M3U8 URL ***
+const m3u8Url = "https://streamingengine.rtvplus.tv/rtvpluslive/rtvpluslive.stream/chunklist_w2015195144.m3u8"; 
 
 
-        if (Hls.isSupported()) {
-          const hls = new Hls();
-          hls.loadSource(m3u8Url);
-          hls.attachMedia(videoPlayer);
-          hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            videoPlayer.play(); 
-          });
-          hls.on(Hls.Events.ERROR, (event, data) => {
-            console.error("HLS error:", data); 
-            if (data.fatal) { // ... (Error handling as before) ...
-              }
-            });
-
-        } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-          videoPlayer.src = m3u8Url;
-          videoPlayer.addEventListener('loadedmetadata', () => {
-            videoPlayer.play();
-          });
-        } else {
-            // ... Error handling for HLS incompatibility as before...
+if (Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(m3u8Url);
+    hls.attachMedia(videoPlayer);
+    hls.on(Hls.Events.MANIFEST_PARSED, () => videoPlayer.play());
+    hls.on(Hls.Events.ERROR, (event, data) => {
+      console.error("HLS error:", data);
+      if (data.fatal) {
+        switch (data.type) {
+          case Hls.ErrorTypes.NETWORK_ERROR:
+            console.log("Fatal network error, trying to recover");
+            hls.startLoad();
+            break;
+          case Hls.ErrorTypes.MEDIA_ERROR:
+            console.log("Fatal media error, trying to recover");
+            hls.recoverMediaError();
+            break;
+          default:
+            hls.destroy();
+            break;
         }
-
-
-      } else {
-        console.error('Error fetching m3u8 URL:', this.status, this.statusText);
       }
-    };
-    xhr.onerror = function() {
-        console.error('Network error fetching m3u8 URL.');
-    };
+    });
+} else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+    videoPlayer.src = m3u8Url;
+    videoPlayer.addEventListener('loadedmetadata', () => videoPlayer.play());
+} else {
+    const message = 'Your browser does not support HLS video playback.';
+    console.error(message);
+    const errorElement = document.createElement('p');
+    errorElement.textContent = message;
+    document.body.appendChild(errorElement);
+}
 
-
-    xhr.send();
-
-
-
-  </script>
-
-
-
+</script>
 
 </body>
 </html>
